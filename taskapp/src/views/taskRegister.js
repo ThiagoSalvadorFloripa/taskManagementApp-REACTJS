@@ -22,7 +22,29 @@ class TaskRegister extends React.Component{
         description:''
     }
 
+    validationTask(){
+        const msgs = []
+
+        if(!this.state.title){
+            msgs.push('Title field is required')
+        }
+
+        if(!this.state.description){
+            msgs.push('Description field is required')
+        }
+
+        return msgs;
+    }
+
     register = () => {
+        const msgs = this.validationTask();
+         
+        if(msgs && msgs.length > 0){
+            msgs.forEach((msg, index) =>{
+                messageErro(msg)
+            });
+            return false;
+        }
         this.service.saveTask({
             title: this.state.title,
             description: this.state.description
@@ -58,6 +80,7 @@ class TaskRegister extends React.Component{
                                             id="inputDescription"
                                             className="form-control"
                                             name="description"
+                                            required
                                             onChange={e => this.setState({description: e.target.value})} />
                                 </FormGroup>
 

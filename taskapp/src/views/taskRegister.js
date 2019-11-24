@@ -7,6 +7,9 @@ import Card from  '../componets/card'
 
 import TaskService from '../service/taskService'
 
+import {messageErro} from '../componets/toastr'
+import {messageSuccess} from '../componets/toastr'
+
 class TaskRegister extends React.Component{
 
     constructor(){
@@ -24,10 +27,10 @@ class TaskRegister extends React.Component{
             title: this.state.title,
             description: this.state.description
         }).then(response =>{
-           console.log(response)
+            messageSuccess("Saved successfully")
            this.props.history.push('/home')
        }).catch(error => {
-           console.log(error.response)
+         messageErro("Error saving")
        })
     }
 

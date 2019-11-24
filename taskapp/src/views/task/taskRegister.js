@@ -1,14 +1,14 @@
 import React from 'react';
 
 import 'bootswatch/dist/materia/bootstrap.css'
-import FormGroup from '../componets/form-group'
+import FormGroup from '../../componets/form-group'
 import {withRouter} from 'react-router-dom'
-import Card from  '../componets/card'
+import Card from  '../../componets/card'
 
-import TaskService from '../service/taskService'
+import TaskService from '../../service/taskService'
 
-import {messageErro} from '../componets/toastr'
-import {messageSuccess} from '../componets/toastr'
+import {messageErro} from '../../componets/toastr'
+import {messageSuccess} from '../../componets/toastr'
 
 class TaskRegister extends React.Component{
 

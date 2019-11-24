@@ -4,7 +4,7 @@ import 'bootswatch/dist/materia/bootstrap.css'
 import FormGroup from '../componets/form-group'
 import {withRouter} from 'react-router-dom'
 import Card from  '../componets/card'
-
+import axios from 'axios'
 class TaskRegister extends React.Component{
 
     state ={
@@ -13,7 +13,14 @@ class TaskRegister extends React.Component{
     }
 
     register = () => {
-        console.log(this.state)
+       axios.post('http://localhost:8080/tasks',{
+        title: this.state.title,
+        description: this.state.description
+       }).then(response =>{
+           console.log(response)
+       }).catch(error => {
+           console.log(error.response)
+       })
     }
 
     goHome = () =>{

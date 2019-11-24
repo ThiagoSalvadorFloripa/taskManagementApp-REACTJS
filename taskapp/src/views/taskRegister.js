@@ -4,8 +4,15 @@ import 'bootswatch/dist/materia/bootstrap.css'
 import FormGroup from '../componets/form-group'
 import {withRouter} from 'react-router-dom'
 import Card from  '../componets/card'
-import axios from 'axios'
+
+import TaskService from '../service/taskService'
+
 class TaskRegister extends React.Component{
+
+    constructor(){
+        super();
+        this.service = new TaskService();
+    }
 
     state ={
         title:'',
@@ -13,11 +20,12 @@ class TaskRegister extends React.Component{
     }
 
     register = () => {
-       axios.post('http://localhost:8080/tasks',{
-        title: this.state.title,
-        description: this.state.description
-       }).then(response =>{
+        this.service.saveTask({
+            title: this.state.title,
+            description: this.state.description
+        }).then(response =>{
            console.log(response)
+           this.props.history.push('/home')
        }).catch(error => {
            console.log(error.response)
        })

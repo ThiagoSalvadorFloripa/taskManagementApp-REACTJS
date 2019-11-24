@@ -18,7 +18,15 @@ class TaskService extends ApiService{
     }
 
 
-    get
+    deleteTask(id){
+        return this.delete(`tasks/${id}`)
+    }
+
+    updateTask(task){
+        return this.put(`tasks/${task.id}`, task)
+    }
+
+
 }
 
 export default TaskService;

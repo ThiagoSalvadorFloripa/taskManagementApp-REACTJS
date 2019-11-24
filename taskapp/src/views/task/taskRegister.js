@@ -10,6 +10,7 @@ import TaskService from '../../service/taskService'
 import {messageErro} from '../../componets/toastr'
 import {messageSuccess} from '../../componets/toastr'
 
+
 class TaskRegister extends React.Component{
 
     constructor(){
@@ -18,8 +19,44 @@ class TaskRegister extends React.Component{
     }
 
     state ={
+        id:null,
         title:'',
-        description:''
+        description:'',
+        status:true,
+        dateCreated:null,
+        dateChange:null,
+        dateDeleted:null,
+        atualizando: false
+    }
+
+    componentDidMount(){
+        let param1 = this.props.location.pathname;
+        let params = param1.substring(15);
+
+        if(params>0){
+            this.service
+                .getTaskById(params)
+                .then(response => {
+                    this.setState( {...response.data, atualizando: true} )
+                })
+                .catch(erros => {
+                    messageErro("Error find task")
+                })
+        }
+    }
+
+    updateTask = () => {
+        const { id, title, description, status,dateCreated, dateChange, dateDeleted  } = this.state;
+
+        const task = {  id, title, description, status, dateCreated, dateChange, dateDeleted };
+        this.service
+            .updateTask(task)
+            .then(response => {
+                this.props.history.push('/home')
+                messageSuccess("Upadate successfully")
+            }).catch(error => {
+                messageErro("Error update task")
+            })
     }
 
     validationTask(){
@@ -60,9 +97,16 @@ class TaskRegister extends React.Component{
         this.props.history.push('/home')
     }
 
+    handleChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+
+        this.setState({ [name] : value })
+    }
+
     render(){
         return(
-            <Card title="Task Register">
+            <Card title={ this.state.atualizando ? 'Task Update'  : 'Task Register' }>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
@@ -72,7 +116,8 @@ class TaskRegister extends React.Component{
                                             id="inputTitle"
                                             className="form-control"
                                             name="title"
-                                            onChange={e => this.setState({title: e.target.value})} />
+                                            value={this.state.title}
+                                            onChange={this.handleChange} />
                                 </FormGroup>
 
                                 <FormGroup label="Description: *" htmlFor="inputDescription">
@@ -80,11 +125,27 @@ class TaskRegister extends React.Component{
                                             id="inputDescription"
                                             className="form-control"
                                             name="description"
-                                            required
-                                            onChange={e => this.setState({description: e.target.value})} />
+                                            value={this.state.description}
+                                            onChange={this.handleChange}  />
                                 </FormGroup>
 
-                                <button onClick = {this.register} type="button" className="btn btn-primary">Save</button>
+                                { this.state.atualizando ? 
+                                    (
+                                        <button onClick = {this.updateTask} 
+                                                type="button" 
+                                                className="btn btn-primary">
+                                                Update
+                                        </button>
+                                        
+                                    ) : (
+
+                                        <button onClick = {this.register} 
+                                                type="button" 
+                                                className="btn btn-primary">
+                                                Save    
+                                        </button>
+                                    )
+                                }
                                 <button onClick = {this.goHome} type="button" className="btn btn-danger">Cancel</button>
 
                             </div>

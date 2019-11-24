@@ -1,6 +1,4 @@
 import React from 'react'
-import { convertPatternGroupToTask } from 'fast-glob/out/managers/tasks';
-
 export default props => {
 
 
@@ -15,8 +13,17 @@ export default props => {
                 <td>{task.dateChange}</td>
                 <td>{task.dateDeleted}</td>
                 <td>
-                    <button type="button" className="btn btn-outline-primary">Edit</button>
-                    <button type="button" className="btn btn-outline-danger">Delete</button>
+                    <button type="button" 
+                            className="btn btn-outline-primary"
+                            onClick={e => props.edtiAction(task.id)}>
+                            Edit
+                    </button>
+
+                    <button type="button" 
+                            className="btn btn-outline-danger"
+                            onClick={e => props.deleteAction(task.id)}>
+                            Disable
+                    </button>
                 </td>
             </tr> 
         )

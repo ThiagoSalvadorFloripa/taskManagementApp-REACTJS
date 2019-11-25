@@ -21,7 +21,9 @@ $ npm start
 </code></pre>
 <h3 class="code-line" data-line-start=20 data-line-end=21 ><a id="Testing_Application_20"></a>Testing Application:</h3>
 <p class="has-line-data" data-line-start="21" data-line-end="22"><a href="http://localhost:3000/#/">http://localhost:3000/#/</a></p>
-<img src="image/ima3.png">
+<img src="imagem/ima1.png">
+<img src="imagem/ima2.png">
+<img src="imagem/ima3.png">
 <h3 class="code-line" data-line-start=23 data-line-end=24 ><a id="Project_Dependencies_23"></a>Project Dependencies:</h3>
 <pre><code class="has-line-data" data-line-start="25" data-line-end="61" class="language-sh">{
   <span class="hljs-string">"name"</span>: <span class="hljs-string">"taskapp"</span>,
@@ -61,10 +63,14 @@ $ npm start
 </code></pre>
 <h3 class="code-line" data-line-start=62 data-line-end=63 ><a id="Note_62"></a>Note:</h3>
 <p class="has-line-data" data-line-start="63" data-line-end="64">This application is just the frontend, if you want backend go to</p>
+<p><a href="https://github.com/ThiagoSalvadorFloripa/taskManagementApiRest-SPRINGBOOT-MYSQL
+">ACCESS BACKEND!</a></p>
+
 <h3 class="code-line" data-line-start=64 data-line-end=65 ><a id="Version_64"></a>Version:</h3>
 <p class="has-line-data" data-line-start="65" data-line-end="66">1.0.0</p>
 <h3 class="code-line" data-line-start=66 data-line-end=67 ><a id="Author_66"></a>Author:</h3>
-<p class="has-line-data" data-line-start="67" data-line-end="69">Thiago Salvador<br>
-link Mais</p>
+<p class="has-line-data" data-line-start="67" data-line-end="69">Thiago Salvador<br></p>
+<p><a href="https://www.linkedin.com/in/thiagocostasalvador/">ACCESS!</a></p>
+
 <h3 class="code-line" data-line-start=70 data-line-end=71 ><a id="License_70"></a>License:</h3>
 <p class="has-line-data" data-line-start="71" data-line-end="72">O conteúdo desse projeto, em si, é licenciado sob a licença MIT e propriedade intelectual do autor</p>
